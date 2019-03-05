@@ -1,0 +1,45 @@
+{
+  "name": "smart-contract-client",
+  "version": "0.1.0",
+  "description": "GraphQL client for the Smart Contract API",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "lint": "npx standard --parser typescript-eslint-parser --plugin typescript *.ts",
+    "test": "ts-mocha --exit test/**/*.test.ts",
+    "test:watch": "ts-mocha -w --exit test/**/*.test.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/input-output-hk/smart-contract-client-js.git"
+  },
+  "keywords": [
+    "Apollo",
+    "ApolloClient",
+    "GraphQL",
+    "Cardano",
+    "Plutus",
+    "Solidity"
+  ],
+  "contributors": [
+    "Rhys Bartels-Waller <rhys.bartelswaller@iohk.io> (https://iohk.io)",
+    "Sam Jeston <sam.jeston@iohk.io> (https://iohk.io)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/input-output-hk/smart-contract-client-js/issues"
+  },
+  "homepage": "https://github.com/input-output-hk/smart-contract-client-js",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/expect": "^1.20.4",
+    "@types/mocha": "^5.2.6",
+    "chai": "^4.2.0",
+    "eslint-plugin-typescript": "^0.14.0",
+    "mocha": "^6.0.2",
+    "standard": "^12.0.1",
+    "ts-mocha": "^6.0.0",
+    "typescript": "^3.3.3333",
+    "typescript-eslint-parser": "^22.0.0"
+  }
+}
