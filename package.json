@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "lint": "npx standard --parser typescript-eslint-parser --plugin typescript *.ts",
-    "test": "ts-mocha --exit test/**/*.test.ts",
-    "test:watch": "ts-mocha -w --exit test/**/*.test.ts"
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "eslint --fix \"src/**/*.ts\"",
+    "test": "npm run lint && npm run build && nyc mocha",
+    "test:watch": "mocha -w",
+    "test:coverage": "npm test && http-server coverage"
   },
   "repository": {
     "type": "git",
@@ -32,14 +34,64 @@
   "homepage": "https://github.com/input-output-hk/smart-contract-client-js",
   "devDependencies": {
     "@types/chai": "^4.1.7",
+    "@types/chai-as-promised": "^7.1.0",
+    "@types/detect-node": "^2.0.0",
     "@types/expect": "^1.20.4",
+    "@types/graphql": "^14.0.7",
     "@types/mocha": "^5.2.6",
+    "@types/node": "^11.11.6",
+    "@types/urijs": "^1.15.38",
+    "@types/wait-on": "^3.2.0",
+    "@types/web3": "^1.0.18",
+    "@types/ws": "^6.0.1",
+    "@typescript-eslint/eslint-plugin": "^1.5.0",
     "chai": "^4.2.0",
-    "eslint-plugin-typescript": "^0.14.0",
+    "chai-as-promised": "^7.1.1",
+    "docker-compose": "^0.14.1",
+    "eslint": "^5.15.3",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "http-server": "^0.11.1",
     "mocha": "^6.0.2",
+    "nyc": "^13.3.0",
+    "source-map-support": "^0.5.11",
     "standard": "^12.0.1",
     "ts-mocha": "^6.0.0",
     "typescript": "^3.3.3333",
-    "typescript-eslint-parser": "^22.0.0"
+    "typescript-eslint-parser": "^22.0.0",
+    "wait-on": "^3.2.0"
+  },
+  "dependencies": {
+    "apollo-boost": "^0.3.1",
+    "apollo-link-ws": "^1.0.17",
+    "apollo-utilities": "^1.2.1",
+    "cross-fetch": "^3.0.1",
+    "detect-node": "^2.0.4",
+    "graphql": "^14.1.1",
+    "graphql-tag": "^2.10.1",
+    "mobx": "^5.9.0",
+    "subscriptions-transport-ws": "^0.9.16",
+    "urijs": "^1.19.1",
+    "web3": "^1.0.0-beta.50",
+    "web3-providers": "^1.0.0-beta.50",
+    "ws": "^6.2.0"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "src/**/*.spec.ts"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "all": true
   }
 }
